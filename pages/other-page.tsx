@@ -135,13 +135,13 @@ const pathVariants = {
   },
 };
 
-export default function Home() {
+export default function OtherPage() {
   const router = useRouter();
 
   return (
     <Grid variants={gridVariants}>
       <Head>
-        <title>Index | Route Transitions</title>
+        <title>Other page | Route Transitions</title>
         <meta
           name="description"
           content="Next route transitions with React Spring"
@@ -153,12 +153,12 @@ export default function Home() {
         variants={titleVariants}
         animate="enter"
         initial="initial"
-        exit="initial"
+        exit="exit"
       >
-        Title of index page
+        Title of other page
       </Title>
       <Text
-        exit="initial"
+        exit="exit"
         initial="initial"
         animate="enter"
         variants={textVariants}
@@ -173,62 +173,47 @@ export default function Home() {
       <ShapeWrapper>
         <svg
           className="circle"
-          width="288"
-          height="288"
-          viewBox="0 0 288 288"
+          width="280"
+          height="280"
+          viewBox="0 0 280 280"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeDasharray={1000}
         >
+          <motion.path
+            d="M9.20322 97.5016L140 2.47213L270.797 97.5016L220.837 251.262H59.1632L9.20322 97.5016Z"
+            strokeWidth="4"
+            variants={pathVariants}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+          />
           <motion.circle
+            cx="140"
+            cy="140"
+            r="138"
+            strokeWidth="4"
             variants={circleVariants}
             initial="initial"
             animate="enter"
+            exit="exit"
             style={{
               transform: "rotate(-90deg)",
               transformOrigin: "50% 50%",
             }}
-            cx="144"
-            cy="144"
-            r="142"
-            strokeWidth="4"
-          />
-          <motion.path
-            variants={pathVariants}
-            initial="initial"
-            animate="enter"
-            exit="initial"
-            d="M144 4L265.244 214H22.7564L144 4Z"
-            strokeWidth="4"
           />
         </svg>
       </ShapeWrapper>
-      <Buttons
-        variants={{
-          enter: {
-            transition: {
-              when: "beforeChildren",
-              staggerChildren: 0.3,
-            },
-          },
-          exit: {
-            transition: {
-              when: "afterChildren",
-              staggerChildren: 0.3,
-              staggerDirection: -1,
-            },
-          },
-        }}
-      >
+      <Buttons>
         <Button
           onClick={() => {
-            router.push("/other-page");
+            router.back();
           }}
           initial="initial"
           animate="enter"
-          exit="initial"
+          exit="exit"
           variants={{
             initial: {
               y: 40,
@@ -240,33 +225,11 @@ export default function Home() {
             },
             exit: {
               y: 40,
-              opacity: 1,
-            },
-          }}
-        >
-          Other page
-        </Button>
-        <Button
-          initial="initial"
-          animate="enter"
-          exit="initial"
-          variants={{
-            initial: {
-              y: 40,
               opacity: 0,
             },
-            enter: {
-              y: 0,
-              opacity: 1,
-            },
-            exit: {
-              y: 40,
-              opacity: 1,
-            },
           }}
-          outlined
         >
-          Fake Button
+          Go back
         </Button>
       </Buttons>
     </Grid>
