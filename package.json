@@ -1,7 +1,11 @@
 {
-  "name": "route-transitions",
+  "name": "next-route-transitions",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Jean Tivan",
+    "email": "jptivan52@gmail.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
